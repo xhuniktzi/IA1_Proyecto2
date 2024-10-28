@@ -86,6 +86,8 @@ const calculatePolyR2 = () => {
     4
   )}`;
 };
+// Variable para almacenar la instancia del gráfico
+let polyChart;
 
 // Función para renderizar el gráfico polinomial
 const renderPolyChart = () => {
@@ -100,8 +102,13 @@ const renderPolyChart = () => {
 
   const ctx = document.querySelector("#polynomial--canva").getContext("2d");
 
-  
-  new Chart(ctx, {
+  // Destruir el gráfico existente si ya existe
+  if (polyChart) {
+    polyChart.destroy();
+  }
+
+  // Crear un nuevo gráfico y almacenarlo en polyChart
+  polyChart = new Chart(ctx, {
     type: "scatter",
     data: {
       datasets: [

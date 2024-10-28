@@ -82,13 +82,23 @@ const calculateR2 = () => {
   r2Result.textContent = `El Coeficiente R2 del modelo es: ${r2.toFixed(4)}`;
 };
 
+// Variable para almacenar la instancia del gráfico
+let linearChart;
+
+
 // Función para renderizar el gráfico
 const renderChart = () => {
   const lineData = xVars.map((x, index) => ({ x, y: predict[index] }));
   const pointData = xVars.map((x, index) => ({ x, y: yVars[index] }));
 
   const ctx = document.querySelector("#linear--canva").getContext("2d");
-  new Chart(ctx, {
+  // Destruir el gráfico existente si ya existe
+  if (linearChart) {
+    linearChart.destroy();
+  }
+
+  // Crear un nuevo gráfico y almacenarlo en linearChart
+  linearChart = new Chart(ctx, {
     type: "scatter",
     data: {
       datasets: [
