@@ -5,6 +5,11 @@ const predictBtn = document.querySelector("#linear--btn-predict");
 const mseBtn = document.querySelector("#linear--btn-mse");
 const r2Btn = document.querySelector("#linear--btn-r2");
 
+const fitResult = document.querySelector("#fit-result");
+const predictResult = document.querySelector("#predict-result");
+const mseResult = document.querySelector("#mse-result");
+const r2Result = document.querySelector("#r2-result");
+
 let xVars = [];
 let yVars = [];
 let linearInstance = new LinearRegression();
@@ -20,11 +25,9 @@ const readCSV = async (file) => {
       const xData = [];
       const yData = [];
 
-      // Procesa cada fila del CSV
       rows.forEach((row) => {
         const [x, y] = row.split(",").map(Number);
         if (!isNaN(x) && !isNaN(y)) {
-          // Filtra filas no numéricas
           xData.push(x);
           yData.push(y);
         }
@@ -40,7 +43,7 @@ const readCSV = async (file) => {
 // Acción: Fit (ajustar el modelo)
 const fitModel = async () => {
   if (!fileInput.files.length) {
-    alert("Por favor selecciona un archivo CSV.");
+    fitResult.textContent = "Por favor selecciona un archivo CSV.";
     return;
   }
 
@@ -52,7 +55,7 @@ const fitModel = async () => {
 
   // Habilita el botón de predict una vez que se ha ajustado el modelo
   predictBtn.disabled = false;
-  alert("Modelo ajustado correctamente.");
+  fitResult.textContent = "Modelo ajustado correctamente.";
 };
 
 // Acción: Predict (predecir)
@@ -63,21 +66,20 @@ const predictModel = () => {
   mseBtn.disabled = false;
   r2Btn.disabled = false;
 
-  // Visualiza la predicción
   renderChart();
-  alert("Predicciones realizadas.");
+  predictResult.textContent = "Predicciones realizadas.";
 };
 
 // Acción: MSE (Error Cuadrático Medio)
 const calculateMSE = () => {
   const mse = linearInstance.mserror(yVars, predict);
-  alert(`El MSE del modelo es: ${mse}`);
+  mseResult.textContent = `El MSE del modelo es: ${mse.toFixed(4)}`;
 };
 
 // Acción: Coeficiente R2
 const calculateR2 = () => {
   const r2 = linearInstance.coeficientR2(yVars, predict);
-  alert(`El Coeficiente R2 del modelo es: ${r2}`);
+  r2Result.textContent = `El Coeficiente R2 del modelo es: ${r2.toFixed(4)}`;
 };
 
 // Función para renderizar el gráfico

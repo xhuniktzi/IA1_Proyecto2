@@ -5,19 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto 2 de IA</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <h1>Modelos de IA</h1>
-    <section>
+    <section id="model-container">
         <h2>Regresión Lineal</h2>
-        <div style="width: 800px; height: 400px;"><canvas id="linear--canva"></canvas></div>
-        <input type="file" id="linear--file" accept=".csv">
-        <button id="linear--btn-fit" type="button">Fit</button>
-        <button id="linear--btn-predict" type="button" disabled>Predict</button>
-        <button id="linear--btn-mse" type="button" disabled>MSE</button>
-        <button id="linear--btn-r2" type="button" disabled>Coeficiente R2</button>
+
+        <!-- Canvas para el gráfico -->
+        <div id="canvas-container">
+            <canvas id="linear--canva" width="800" height="400"></canvas>
+        </div>
+
+        <!-- Contenedor de botones -->
+        <div id="controls-container">
+            <input type="file" id="linear--file" accept=".csv">
+            <button id="linear--btn-fit" type="button">Fit</button>
+            <button id="linear--btn-predict" type="button" disabled>Predict</button>
+            <button id="linear--btn-mse" type="button" disabled>MSE</button>
+            <button id="linear--btn-r2" type="button" disabled>Coeficiente R2</button>
+        </div>
+
+        <!-- Contenedor de resultados -->
+        <div id="results-container">
+            <h3>Resultados</h3>
+            <p id="fit-result"></p>
+            <p id="predict-result"></p>
+            <p id="mse-result"></p>
+            <p id="r2-result"></p>
+        </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
     <script src="tytusjs/LinearModel.js"></script>
     <script src="scripts/LinearScript.js"></script>
