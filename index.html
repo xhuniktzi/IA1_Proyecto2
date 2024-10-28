@@ -37,9 +37,33 @@
         </div>
     </section>
 
+    <section id="model-container">
+        <h2>Regresión Polinomial</h2>
+        <div id="canvas-container">
+            <canvas id="polynomial--canva" width="800" height="400"></canvas>
+        </div>
+        <div id="controls-container">
+            <input type="file" id="polynomial--file" accept=".csv">
+            <input type="number" id="polynomial-degree" placeholder="Grado del polinomio" min="1" />
+            <button id="polynomial--btn-fit" type="button">Fit</button>
+            <button id="polynomial--btn-predict" type="button" disabled>Predict</button>
+            <button id="polynomial--btn-mse" type="button" disabled>MSE</button>
+            <button id="polynomial--btn-r2" type="button" disabled>Coeficiente R2</button>
+        </div>
+        <div id="results-container">
+            <h3>Resultados</h3>
+            <p id="poly-fit-result"></p>
+            <p id="poly-predict-result"></p>
+            <p id="poly-mse-result"></p>
+            <p id="poly-r2-result"></p>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
     <script src="tytusjs/LinearModel.js"></script>
     <script src="scripts/LinearScript.js"></script>
+    <script src="tytusjs/PolynomialModel.js"></script>
+    <script src="scripts/PolynomialScript.js"></script>
 </body>
 
 </html>
