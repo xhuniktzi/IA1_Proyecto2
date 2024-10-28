@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto 2 de IA</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <h1>Modelos de IA</h1>
-    <section id="model-container">
+    
+    <!-- Selector de modelo -->
+    <section id="selector-container">
+        <label for="model-selector">Seleccione el modelo a utilizar:</label>
+        <select id="model-selector">
+            <option value="" selected disabled>Elija una opción</option>
+            <option value="linear-regression">Regresión Lineal</option>
+            <option value="polynomial-regression">Regresión Polinomial</option>
+            <option value="decision-tree">Árbol de Decisión ID3</option>
+        </select>
+    </section>
+    
+    <!-- Sección de Regresión Lineal -->
+    <section id="linear-regression" class="model-section">
         <h2>Regresión Lineal</h2>
-
-        <!-- Canvas para el gráfico -->
         <div id="canvas-container">
             <canvas id="linear--canva" width="800" height="400"></canvas>
         </div>
-
-        <!-- Contenedor de botones -->
         <div id="controls-container">
             <input type="file" id="linear--file" accept=".csv">
             <button id="linear--btn-fit" type="button">Fit</button>
@@ -26,8 +33,6 @@
             <button id="linear--btn-mse" type="button" disabled>MSE</button>
             <button id="linear--btn-r2" type="button" disabled>Coeficiente R2</button>
         </div>
-
-        <!-- Contenedor de resultados -->
         <div id="results-container">
             <h3>Resultados</h3>
             <p id="fit-result"></p>
@@ -37,7 +42,8 @@
         </div>
     </section>
 
-    <section id="model-container">
+    <!-- Sección de Regresión Polinomial -->
+    <section id="polynomial-regression" class="model-section">
         <h2>Regresión Polinomial</h2>
         <div id="canvas-container">
             <canvas id="polynomial--canva" width="800" height="400"></canvas>
@@ -60,62 +66,37 @@
     </section>
 
     <!-- Sección de Árbol de Decisión ID3 -->
-    <section id="model-container">
+    <section id="decision-tree" class="model-section">
         <h2>Árbol de Decisión ID3</h2>
-
-        <!-- Contenedor de carga de archivos -->
         <div id="controls-container">
             <label for="training-file">Cargar archivo CSV de Entrenamiento:</label>
             <input type="file" id="training-file" accept=".csv">
-
             <label for="predict-file">Cargar archivo CSV para Predicción (opcional):</label>
             <input type="file" id="predict-file" accept=".csv">
-
             <button id="btngenerate" type="button">Generar Árbol</button>
             <button id="predict" type="button">Predecir</button>
         </div>
-
-        <!-- Contenedor de Resultados -->
         <div id="results-container">
             <h3>Resultados</h3>
             <p id="prediction"></p>
         </div>
-
-        <!-- Contenedor para el Árbol Visualizado -->
         <div id="treed" style="width: 800px; height: 400px; border: 1px solid lightgray;"></div>
     </section>
 
-    <!-- Sección de Naive Bayes -->
-    <!-- <section id="model-container">
-        <h2>Predicción</h2>
-
-
-        <div id="controls-container">
-            <label for="data-file">Cargar archivo CSV de datos:</label>
-            <input type="file" id="data-file" accept=".csv">
-
-            <div id="input-fields"></div>
-
-            <button id="bayes--btn" type="button">Predecir</button>
-        </div>
-
-
-        <div id="tables-container">
-            <table id="tabla" border="1"></table>
-            <table id="tabla2" border="1"></table>
-        </div>
-    </section> -->
-
+    <!-- Scripts para cada modelo -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
     <script src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
+
     <script src="tytusjs/LinearModel.js"></script>
     <script src="scripts/LinearScript.js"></script>
+
     <script src="tytusjs/PolynomialModel.js"></script>
     <script src="scripts/PolynomialScript.js"></script>
+
     <script src="tytusjs/DecisionTreeID3.js"></script>
     <script src="scripts/DecisionTreeScript.js"></script>
-    <!-- <script src="tytusjs/NaiveBayes.js"></script>
-    <script src="scripts/NaiveBayesScript.js"></script> -->
-</body>
 
+
+    <script src="scripts/SelectorScript.js"></script>
+</body>
 </html>
