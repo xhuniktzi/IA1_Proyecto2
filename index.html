@@ -20,6 +20,7 @@
             <option value="polynomial-regression">Regresión Polinomial</option>
             <option value="decision-tree">Árbol de Decisión ID3</option>
             <option value="neural-network">Redes Neuronales</option>
+            <option value="kmeans-section">K-Means</option>
         </select>
     </section>
 
@@ -109,6 +110,27 @@
         </div>
     </section>
 
+    <section id="kmeans-section" class="model-section">
+        <h2>Clustering K-Means</h2>
+
+        <div id="controls-container">
+            <label for="data-file">Cargar archivo de datos (CSV):</label>
+            <input type="file" id="data-file" accept=".csv">
+
+            <label for="config-file">Cargar archivo de configuración (CSV):</label>
+            <input type="file" id="config-file" accept=".csv">
+
+            <button id="btnLineal" type="button">Ejecutar Clustering</button>
+        </div>
+
+        <!-- Contenedor Canvas para Chart.js -->
+        <div style="width: 800px; height: 400px;">
+            <canvas id="chartkmean"></canvas>
+        </div>
+    </section>
+
+
+
     <!-- Scripts para cada modelo -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
     <script src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
@@ -124,6 +146,9 @@
 
     <script src="tytusjs/NeuronalNetwork.js"></script>
     <script src="scripts/NeuralNetworkScript.js"></script>
+
+    <script src="tytusjs/kmeans.js"></script>
+    <script src="scripts/KMeansScript.js"></script>
 
     <script src="scripts/SelectorScript.js"></script>
 </body>
